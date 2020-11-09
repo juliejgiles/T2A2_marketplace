@@ -76,3 +76,9 @@ end
 
 #adds the Bulma gem to provide a CSS framework based on Flexbos - https://github.com/joshuajansen/bulma-rails 
 gem "bulma-rails", "~> 0.9.0"
+
+#adds the Carrierwave gem which lets users (sellers) upload images to the app easily - https://github.com/carrierwaveuploader/carrierwave
+gem 'carrierwave', '~> 2.0'
+
+#adds the MiniMagick gem which lets users transform images that they're uploading - https://github.com/minimagick/minimagick
+gem "mini_magick"

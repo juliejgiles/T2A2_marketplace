@@ -1,0 +1,8 @@
+<% content_for :header do %>
+<h1>Edit your sticker listing</h1>
+<% end %>
+
+<%= render 'form', sticker: @sticker %>
+
+<%= link_to 'Show', @sticker %> |
+<%= link_to 'Back', stickers_path %>
