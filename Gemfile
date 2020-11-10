@@ -53,11 +53,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-#adds cancan gem - https://github.com/ryanb/cancan
+#adds cancan gem for additional security and to create roles for admin, buyer, seller - https://github.com/ryanb/cancan
 gem 'cancan'
-
-#adds bootstrap gem - https://www.rubydoc.info/gems/bootstrap/4.0.0
-gem 'bootstrap', '~> 4.0.0'
 
 #adds simple form gem - https://github.com/heartcombo/simple_form 
 gem 'simple_form'
