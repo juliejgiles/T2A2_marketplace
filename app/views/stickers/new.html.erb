@@ -1,13 +1,10 @@
 <% content_for :header do %>
-
-
-
-
-
-
-<h1>Sell a sticker</h1>
+        <div class="hero container">
+            <div class="row">
+                <h2 class="title">Create a sticker listing</h2>
+            </div>
+        </div>
 <% end %>
 
 <%= render 'form', sticker: @sticker %>
 
-<%= link_to 'Back', stickers_path %>

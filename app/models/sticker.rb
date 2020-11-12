@@ -12,7 +12,7 @@ validates :title, length: {maximum: 200, too_long: "Title must be less than %{co
 #this ensures that the price can only be an integer that's no more than 6 characters in total
 validates :price, numericality: { only_integer: true}, length: {maximum: 6}
 
-
+#Available selection options for the material and finish attributes of stickers
 MATERIAL = %w{ Vinyl Paper Polyester }
 FINISH = %w{ Matte Glossy Transparent }
 

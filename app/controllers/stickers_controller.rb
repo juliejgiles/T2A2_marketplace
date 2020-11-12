@@ -1,9 +1,10 @@
 class StickersController < ApplicationController
   before_action :set_sticker, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except:[:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /stickers
   # GET /stickers.json
+  #Stickers will be shown on the index page in the order from the newest created to the oldest
   def index
     @stickers = Sticker.all.order("created_at desc")
   end

@@ -3,26 +3,34 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="columns">
-  
-    <div class="inputs column">  
-      <div class="control"> 
-        <%= f.input :title, required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
-      </div>
-    </div>
+<div class="row" style="background-color: #f05454;">
+  <div class="inputs columns field">
+        <div class="control">
+          <label class="label">Heading</label>
+        </div>
+        <div class="control"> 
+            <%= f.input :title, required: true, input_html: { class: "input"}, wrapper: false %>
+        </div>
+  </div>
+  <div class="inputs columns field">
+      <div class="control">
+          <label class="label">Price</label>
+        </div>
+        <div class="control"> 
+             <%= f.input :price, required: true, input_html: { class:"input", maxlength: 6 }, wrapper: false, label_html: { class:"label"} %>
+        </div>
+  </div>
+</div>
 
-    <div class="inputs column">  
-      <div class="control"> 
-        <%= f.input :price, required: true, input_html: { class:"input", maxlength: 6 }, wrapper: false, label_html: { class:"label"} %>
-      </div>
-    </div>
-
-    <div class="inputs column">  
+<div class="row" style="background-color: #f05454;">
+  <div class="inputs column">  
       <div class="control"> 
         <%= f.input :description, required: true, input_html: { class: "textarea"}, wrapper: false, label_html: { class: "label" } %>
       </div>
     </div>
-
+</div>
+  
+<div class="row" style="background-color: #f05454;">
     <div class="inputs column">  
       <label class="label">Finish</label>
         <div class="control"> 
@@ -34,7 +42,9 @@
             </span>
         </div>
       </div>
+</div>
 
+<div class="row" style="background-color: #f05454;">
     <div class="inputs column">  
       <div class="control"> 
           <span class="select">
@@ -45,7 +55,9 @@
           </span>
       </div>
     </div>    
+</div>
 
+<div class="row" style="background-color: #f05454;">
     <div class="control">
       <label class="label">Add images</label>
         <div class="file">
@@ -59,12 +71,14 @@
           <output id="list"></output>
         </div>
     </div>
-    
+</div>
 
+<div class="row" style="background-color: #f05454;">
     <div class="form-actions">
       <%= f.button :submit, class: 'button is-warning' %>
       <%= link_to 'Cancel', stickers_path, class:'button is-light' %>
     </div>
 
   </div>
+</div>
 <% end %>
