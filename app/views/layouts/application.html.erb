@@ -14,37 +14,94 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="<%= yield (:body_class) %>">
 
-
-<%= render 'shared/nav'%>
-
-
-
+<%# Renders the navbar partial located in views> shared> _nav.html.erb %>
+<%#= render 'shared/nav' %>
 
 
 
+<%# Flash notification when user has successfully signed in %>
+ <% if flash[:notice] %>
+      <div class="notification is-success global-notification">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
 
 
 
+<%# Flash notification when user performs invalid sign in action %>
+    <% if flash[:alert] %>
+    <div class="notification is-danger global-notification">
+      <p class="alert"><%= alert %></p>
+    </div>
+    <% end %>
+     
+   <%# Navbar styling %>     
+     <nav class="navbar is-warning" role="navigation" aria-label="main navigation" style="background-color: #f05454;">
+      <div class="navbar-brand">
+        <%= link_to root_path, class:"navbar-item" do %>
+          <h1 class="title is-5 colorblack">Sticker Station</h1>
+        <% end  %>
 
-  <p class="notice"><%= notice %></p>
+
+      <div class="navbar-burger burger" data-target="navbar" >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped">
+            
+            <%# if cart_has_items %>
+              <%#= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
+              <%# <span class="icon is-small">
+                <i class="fa fa-shopping-cart"></i>
+              </span>
+              <span>Cart %>
+                <%#= cart_count_over_one %>
+                <%# </span> %>
+              <%# end %>
+            <%#end %>
+
+            <% if user_signed_in? %>
+              <%= link_to 'Sell', '#', class: "navbar-item button is-dark" %>
+
+              <div class="navbar-item has-dropdown is-hoverable">
+                <%= link_to 'My Account', edit_user_registration_path, class: "navbar-link" %>
+                <div class="navbar-dropdown is-right">
+                  <%= link_to current_user.name, edit_user_registration_path, class:"navbar-item" %>
+                  <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
+                </div>
+              </div>
+            <% else %>
+
+            <%= link_to "Sign In", new_user_session_path, class:"navbar-item button is-warning" %>
+            <%= link_to "Sign up", new_user_registration_path, class:"navbar-item button is-warning"%>
+
+            <% end %>
+
+            </div>
+          </div>
+        </div>
+    </div>
+  </nav>
+
+  <%= yield(:header) %>
+
+  <div class="container">
+
     <%= yield %>
 
-    <% if user_signed_in? %>
-      <%= link_to 'Sell', 'new_sticker_path', class: "navbar-item button is-dark" %>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <%= link_to 'Account', edit_user_registration_path, class: "navbar-link" %>
-        <div class="navbar-dropdown is-right">
-            <%= link_to current_user.name, edit_user_registration_path, class: "navbar-item" %>
-            <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "navbar-item" %>
-        </div>
-      </div>
-    <% else %>
-         <%= link_to 'Sign In', new_user_session_path, class: "navbar-item button is-warning" %>
-          <%= link_to 'Sign Up', new_user_registration_path, class: "navbar-item button is-warning" %>
-    <% end %>
+  </div>
 
   </body>
 </html>
+
+
+
+           

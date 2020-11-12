@@ -79,3 +79,4 @@ gem 'carrierwave', '~> 2.0'
 
 #adds the MiniMagick gem which lets users transform images that they're uploading - https://github.com/minimagick/minimagick
 gem "mini_magick"
+
