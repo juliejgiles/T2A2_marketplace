@@ -1,34 +1,42 @@
-<%# content_for :body_class, 'bg-light' %>
+<%content_for :body_class %>
 
 <div class="columns">
   <div class="column is-8">
   <h1 class="title is-2"> <%= @sticker.title %> </h1>
+  <p class="has-text-gray sold-by sold-padding"> Designed by <%= @sticker.user.name %></p>
   
-  <div class="feature-image">
-    <%= image_tag(@sticker.image_url(:default)) %>
+  
+  <div class="image-holder">
+    <div class="feature-image show-image-bg">
+      <% if @sticker.image? %>
+         <%= image_tag(@sticker.image_url(:default).to_s) %>
+      <% else  %>
+        <h1 class="preview"> No Preview Available </h1>
+      <% end %>
+    </div>
   </div>
-
-    <ul class="pv1">
-        <li class="inline-block pr3"><h4 class="has-text-centered mb4"><%= number_to_currency(@sticker.price) %></h4></li>
+  <div class="sticker-text">
+    <ul >
+        <li class="inline-labels"><h4 class="has-text-left price"><%= number_to_currency(@sticker.price) %></h4></li>
           
         <% if @sticker.finish? %>
-          <li class="inline-block pr3"><%= @sticker.finish %></li>
+          <li class="inline-block"><%= @sticker.finish %></li>
         <% end %>
 
         <% if @sticker.material? %>
-          <li class="inline-block pr3"><%= @sticker.material %></li>
+          <li class="inline-block"><%= @sticker.material %></li>
         <% end %>
     </ul>
-
+</div>
     
 
-    <div class="content pa4 mt3 bg-white border-radius-3">
+    <div class="show-content">
 
-        <h3 class="subtitle is-4">Description</h3>
+        <h3 class="subtitle description is-4">Description</h3>
         <%= @sticker.description %>
 
-
-        <h3 class="subtitle is-4 pt5">See what others have also viewed:</h3>
+    <div class="other-views">
+        <h3 class="subtitle recommendations is-4 ">Items recommended for you:</h3>
 
         <table class="table is-narrow">
           <tr>
@@ -38,11 +46,13 @@
       
       <div class="column is-3 is-offset-1">
         <div class="bg-white pa4 border-radius-3">
-          <h4 class="title is-5 has-text-centered"><%= number_to_currency(@sticker.price) %></h4>
-          <p class="has-text-centered mb4">Sold by <%= @sticker.user.name %></p>
+          <h4 class="is-5 has-text-centered price"><%= number_to_currency(@sticker.price) %></h4>
+          <p class="has-text-centered mb4">Designed by <%= @sticker.user.name %></p>
           <%#= button_to 'Add to cart', line_items_path(sticker_id: @sticker), class: 'button is-warning add-to-cart' %>
         </div>
       </div>
+    
+    </div>
     </div>
   
   </div>

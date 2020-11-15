@@ -18,6 +18,7 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+//STYLING FOR SHARED ELEMENTS
 a {
     text-decoration: none;
     text-emphasis: none;
@@ -31,6 +32,10 @@ a.hover {
 
 .button {
     margin: 10px;
+}
+
+.page-title {
+    color: #6d6875;
 }
 
 //NAVBAR STYLING 
@@ -135,11 +140,22 @@ a.hover {
 
 }
 
-
-
 .preview {
-    margin-top: 130px;
+    margin-top: 90px;
     margin-left: 15px;
+}
+
+.no-preview-icon {
+    display: relative;
+    margin-bottom: 10px;
+    align-self: center;
+    color: darkgrey;
+}
+
+.see-more {
+    font-size: 1.5rem;
+    margin: 20px;
+    color: #6d6875;
 }
 
 //Zooming in on image of sticker when mouse hovers over it 
@@ -149,4 +165,47 @@ img {
 
 img:hover {
     transform: scale(2);
+}
+
+//STYLIGN FOR SHOW PAGE
+
+.show-content {
+    padding: var(--spacing-large);
+    margin-top: var(--spacing-medium);
+    background-color: white;
+    border-radius: 3px;
+}
+
+.show-image-bg {
+    background-color: #F8F8F8;
+    justify-content: center;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.inline-labels {
+    display: inline-block;
+    padding-right: var(--spacing-medium);
+}
+
+.sold-padding {
+    margin-bottom: 20px;
+}
+
+.other-views {
+    background-color: #e99898;
+    border-radius: 20px;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.recommendations {
+    padding-top: var(--spacing-extra-large);
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.description {
+    margin-top: 30px;
 }
