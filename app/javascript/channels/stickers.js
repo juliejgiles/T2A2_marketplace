@@ -1,4 +1,5 @@
 //Event listener accesses the Turbolinks gem to listen for the events below
+//Functionality for uploading pictures to the application 
 document.addEventListener("turbolinks:load", function() {
 
     var stickerImage = document.querySelector('.sticker-image');
