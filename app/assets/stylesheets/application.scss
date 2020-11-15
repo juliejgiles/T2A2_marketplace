@@ -29,6 +29,10 @@ a.hover {
     text-emphasis: none;
 }
 
+.button {
+    margin: 10px;
+}
+
 //NAVBAR STYLING 
 
 .brand-title {
@@ -117,6 +121,8 @@ a.hover {
         text-align: center;
     }
 
+
+
     .sticker-text {
         padding-top: var(--spacing-medium);
     }
@@ -134,4 +140,13 @@ a.hover {
 .preview {
     margin-top: 130px;
     margin-left: 15px;
+}
+
+//Zooming in on image of sticker when mouse hovers over it 
+img {
+    transition: transform .4s;
+}
+
+img:hover {
+    transform: scale(2);
 }
