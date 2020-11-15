@@ -1,35 +1,113 @@
 
 <% content_for :header do %>
-<h1>Stickers</h1>
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">Stickers for sale</h1>
+      <div>
+    </div>
 <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Type</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @stickers.each do |sticker| %>
-      <tr>
-        <td><%= sticker.title %></td>
-        <td><%= sticker.description %></td>
-        <td><%= sticker.finish %></td>
-        <td><%= sticker.price %></td>
-        <td><%= sticker.material %></td>
-        <td><%= link_to 'Show', sticker %></td>
-        <td><%= link_to 'Edit', edit_sticker_path(sticker) %></td>
-        <td><%= link_to 'Destroy', sticker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="sticker-index-grid">
+  <% @stickers.each do |sticker| %>
 
-<br>
+   <div class="sticker box-padding">
+      <div class="thumb-background">
+        <div class="sticker-thumb">
+            <%# The Carrierwave gem allows us to link to the image path to display its thumbnail size on the index page %>
+          <div class="container image-holder">
+                <% if sticker.image? %>
+                <%= link_to image_tag(sticker.image_url(:thumb).to_s), sticker %>
+              <% else  %>
+                <h1 class="preview"> No Preview Available </h1>
+              <% end %>
+          </div>
 
-<%= link_to 'New Sticker', new_sticker_path %>
+          <%# Favourites icon %>
+          <span class="icon is-large fas fa-lg tag3">
+            <span class="fa-stack">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-heart fa-stack-1x fa-inverse"></i>
+            </span>
+          </span>
+
+          <%# If user has entered a Finish for the sticker and has uploaded a picture of the sticker, the finish will be displayed. %>
+          <% if sticker.finish? && sticker.image? %>
+                <div class="tag1">
+                  <span class="tag is-warning"><%= sticker.finish %></span>
+                </div>
+          <% end %>
+          <%# If user has entered a Material for the sticker and has uploaded a picture of the sticker, the material will be displayed. %>
+          <% if sticker.material? && sticker.image? %>
+                <div class="tag2">
+                  <span class="tag is-primary"><%= sticker.material %></span>
+                </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="sticker-text">
+        <p class="has-text-left price">From <%= number_to_currency(sticker.price)%></p>
+        <h3 class="sticker-title"><%= link_to sticker.title, sticker %></h3>
+        <p class="has-text-gray sold-by">Sold by <%= sticker.user.name %></p>
+                
+
+        <% if sticker_author(sticker) %>
+            <%= link_to 'Edit', edit_sticker_path(sticker), class: "button is-small" %>
+            <%= link_to 'Delete', sticker, method: :delete, data: { confirm: "Are you sure ?" }, class: "button is-small" %>
+        <% end %>
+
+      </div>
+    </div>
+  <% end %>
+</div>
+
+      <%# </h3> %>
+          <%# <p class="has-text-left price"> <%= number_to_currency(sticker.price)</p>  %>
+        
+         <%# <div style="outline-style: solid; outline-width: 20px; outline-color:#f05454;"> %>
+            <%#= link_to image_tag(sticker.image_url(:thumb).to_s), sticker  %> 
+        <%# </div> %>
+        
+        <%# if sticker.finish? %>
+          <%# <div>
+              <span class="tag is-danger"> <%= sticker.finish %> 
+              
+              <%# </span> %>
+          <%# </div> %>
+        <%# end %>
+         <%# if sticker.material? %>
+          <%# <div>
+              <span class="tag is-warning"> <%= sticker.material %> 
+              
+              <%# </span> %>
+          <%# </div> %> 
+        <%# <p class="has-text-gray", style="padding-top: var(--spacing-extra-small);"> Sold by <%= sticker.user.name.to_s </p> %> 
+        <%# end %>
+      <%# </div> %>
+    
+    
+
+    <%# <div> %>
+  
+      <%# The sticker_helper.rb helper method checks to see if the id of the current user matches the 'user_id' of the sticker %>
+        <%# if sticker_author(sticker) %>
+          <%#= link_to 'Edit', edit_sticker_path(sticker), class: "button is-danger"%>
+          
+          <%# A sticker is deleted by calling the delete method on the sticker %>
+          <%#= link_to 'Delete', sticker, method: :delete, data: { confirm: "Are you sure you want to delete this sticker listing?" }, class: "button is-danger"%>
+        <%# end %>
+    <%# </div> %>
+  <%# </div> %>
+  <%# </div> %>
+<%#end %>
+<%# </div> %>
+
+
+
+ 
+        
+
+
+
+      

@@ -1,30 +1,53 @@
+<%# content_for :body_class, 'bg-light' %>
+
+<div class="columns">
+  <div class="column is-8">
+  <h1 class="title is-2"> <%= @sticker.title %> </h1>
+  
+  <div class="feature-image">
+    <%= image_tag(@sticker.image_url(:default)) %>
+  </div>
+
+    <ul class="pv1">
+        <li class="inline-block pr3"><h4 class="has-text-centered mb4"><%= number_to_currency(@sticker.price) %></h4></li>
+          
+        <% if @sticker.finish? %>
+          <li class="inline-block pr3"><%= @sticker.finish %></li>
+        <% end %>
+
+        <% if @sticker.material? %>
+          <li class="inline-block pr3"><%= @sticker.material %></li>
+        <% end %>
+    </ul>
+
+    
+
+    <div class="content pa4 mt3 bg-white border-radius-3">
+
+        <h3 class="subtitle is-4">Description</h3>
+        <%= @sticker.description %>
 
 
-<p>
-  <strong>Name:</strong>
-  <%= @sticker.title %>
-</p>
+        <h3 class="subtitle is-4 pt5">See what others have also viewed:</h3>
 
-<p>
-  <strong>Price:</strong>
-  <%= @sticker.price %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @sticker.description %>
-</p>
-
-<p>
-  <strong>Finish:</strong>
-  <%= @sticker.finish %>
-</p>
-
-<p>
-  <strong>Material:</strong>
-  <%= @sticker.material %>
-</p>
+        <table class="table is-narrow">
+          <tr>
+            <td class="has-text-weight-bold">TEST-TITLE</td>
+            <td><%= @sticker %></td>
+          </tr>
+      
+      <div class="column is-3 is-offset-1">
+        <div class="bg-white pa4 border-radius-3">
+          <h4 class="title is-5 has-text-centered"><%= number_to_currency(@sticker.price) %></h4>
+          <p class="has-text-centered mb4">Sold by <%= @sticker.user.name %></p>
+          <%#= button_to 'Add to cart', line_items_path(sticker_id: @sticker), class: 'button is-warning add-to-cart' %>
+        </div>
+      </div>
+    </div>
+  
+  </div>
 
 
-<%= link_to 'Edit', edit_sticker_path(@sticker) %> |
-<%= link_to 'Back', stickers_path %>
+
+</div>
+<%# end %>

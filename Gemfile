@@ -53,6 +53,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+######CUSTOM GEMS #######
 #adds cancan gem for additional security and to create roles for admin, buyer, seller - https://github.com/ryanb/cancan
 gem 'cancan'
 
@@ -80,3 +81,5 @@ gem 'carrierwave', '~> 2.0'
 #adds the MiniMagick gem which lets users transform images that they're uploading - https://github.com/minimagick/minimagick
 gem "mini_magick"
 
+#adds font-awesome, which is used for the heart icons on each sticker 
+gem 'font-awesome-sass', '~> 5.15.1'

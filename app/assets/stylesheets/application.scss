@@ -15,3 +15,123 @@
  */
 
 @import "bulma";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+a {
+    text-decoration: none;
+    text-emphasis: none;
+    color: black;
+}
+
+a.hover {
+    text-decoration: none;
+    text-emphasis: none;
+}
+
+//NAVBAR STYLING 
+
+.brand-title {
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+//STYLING FOR INDEX PAGE
+
+.sticker-index-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    box-shadow: 10px 8px 8px 10px #cfcccc;
+    border-radius: 20px 20px 20px 20px;
+
+    .sticker {
+        border-left: 0;
+        border-top: 0;
+        position: relative;
+        min-height: 400px;
+        border-radius: 10px 10px 10px 10px;
+        box-shadow: 5px 5px 1px 1px #e7e2e2;
+
+        .sticker-title {
+            position: absolute;
+            bottom: 70px;
+            left: 10px;
+            line-height: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: black;
+        }
+
+        .price {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: #5c6b73;
+            font-weight: 600;
+            font-size: 1.5rem;
+            padding-top: var(--spacing-small);
+        }
+
+        .sold-by {
+            padding-top: var(--spacing-extra-small);
+            position: absolute;
+            bottom: 50px;
+            left: 10px;
+        }
+
+        .tag1 {
+            position: absolute;
+            bottom: 120px;
+            left: 9px;
+        }
+
+        .tag2 {
+            position: absolute;
+            bottom: 120px;
+            right: 9px;
+        }
+
+        .tag3 {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: darkgrey;
+        }
+    }
+
+    .sticker-thumb {
+        // position: absolute;
+        max-height: 300px;
+        overflow: hidden;
+    }
+
+    .thumb-background {
+        background-color: #F8F8F8;
+        width: 100%;
+        height: 290px;
+    }
+
+    .image-holder {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .sticker-text {
+        padding-top: var(--spacing-medium);
+    }
+}
+
+.box-padding {
+    padding: 5px;
+    background-color: white;
+    margin: 20px;
+
+}
+
+
+
+.preview {
+    margin-top: 130px;
+    margin-left: 15px;
+}
