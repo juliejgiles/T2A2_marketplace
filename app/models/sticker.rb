@@ -1,4 +1,5 @@
 class Sticker < ApplicationRecord
+    before_destroy :not_referenced_by_any_cart_item
     belongs_to :user, optional: true
     has_many :cart_items
     mount_uploader :image, ImageUploader
@@ -17,7 +18,15 @@ class Sticker < ApplicationRecord
     MATERIAL = %w{ Vinyl Paper Polyester }
     FINISH = %w{ Matte Glossy Transparent }
 
-    
+    private 
+
+    #This allows the cart to still be deleted regardless of whether there are items in it
+    def not_referenced_by_any_cart_item
+        unless cart_items.empty?
+            errors.add(:base, "Line items present")
+            throw :abort
+        end
+    end
 
 
 end

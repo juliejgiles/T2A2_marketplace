@@ -88,8 +88,6 @@ a.hover {
     margin-bottom: 30px;
 }
 
-.results {}
-
 .category {
     padding-right: 20px;
 }
@@ -169,7 +167,6 @@ a.hover {
     }
 
     .sticker-thumb {
-        // position: absolute;
         max-height: 300px;
         overflow: hidden;
     }
@@ -222,6 +219,11 @@ a.hover {
     padding: 10px;
     font-size: 1.5rem;
     font-style: italic;
+}
+
+.buy-tile {
+    border-radius: 20px;
+    margin-right: 50px;
 }
 
 //Zooming in on image of sticker when mouse hovers over it 

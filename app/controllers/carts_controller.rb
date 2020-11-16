@@ -61,7 +61,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
     @cart.destroy if @cart.id == session[:card_id]
     session[:card_id] = nil
     respond_to do |format|
-      format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Cart was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

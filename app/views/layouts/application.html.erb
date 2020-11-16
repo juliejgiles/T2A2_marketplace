@@ -18,20 +18,15 @@
 <%# Renders the navbar partial located in views> shared> _nav.html.erb %>
 <%=render 'shared/nav'%>
 
-
 <%# Renders a greeting to the user's username if they are signed in %>
 <% if user_signed_in? %>
   <div class="subtitle log-in-div">
-    <h2 class="greeting-text">Hi <%= current_user.username %>!</h2>
+    <h2 class="greeting-text">User: <%= current_user.username %></h2>
   </div>
 <% end %>
 
 <%# Renders the search section  %>
 <%=render 'shared/search'%>
-
-
-
-
 
 <%# Flash notification when user has successfully signed in %>
  <% if flash[:notice] %>
@@ -39,8 +34,6 @@
         <p class="notice"><%= notice %></p>
       </div>
     <% end %>
-
-
 
 <%# Flash notification when user performs invalid sign in action %>
     <% if flash[:alert] %>

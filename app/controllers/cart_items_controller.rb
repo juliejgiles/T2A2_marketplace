@@ -27,9 +27,8 @@ class CartItemsController < ApplicationController
   # POST /cart_items
   # POST /cart_items.json
   def create
-    
     sticker = Sticker.find(params[:sticker_id])
-    @cart_item = @cart.add_sticker(cart_item_params)
+    @cart_item = @cart.add_sticker(sticker)
 
     respond_to do |format|
       if @cart_item.save
@@ -59,9 +58,10 @@ class CartItemsController < ApplicationController
   # DELETE /cart_items/1
   # DELETE /cart_items/1.json
   def destroy
+    @cart = Cart.find(session[:cart_id])
     @cart_item.destroy
     respond_to do |format|
-      format.html { redirect_to cart_items_url, notice: 'Cart item was successfully destroyed.' }
+      format.html { redirect_to cart_path(@cart), notice: 'Cart item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -74,18 +74,7 @@ class CartItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cart_item_params
-      params.require(:cart_item).permit(:sticker_id, :cart)
+      params.require(:cart_item).permit(:sticker_id)
     end
 end
 
-module CurrentCart
-  #creates a session for the shopping cart
-  # if the Cart cannot be found, a new cart is created where the id of the session is the cart id
-
-  def set_cart
-      @cart = Cart.find(session[:cart_id])
-  rescue ActiveRecord::RecordNotFound
-      @cart = Cart.create
-      session[:cart_id] = @cart.id
-  end
-end

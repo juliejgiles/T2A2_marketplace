@@ -19,22 +19,24 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="field is-grouped">
-            
-            <%# if cart_has_items %>
-              <%#= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
-              <%# <span class="icon is-small">
-                <i class="fa fa-shopping-cart"></i>
-              </span>
-              <span>Cart %>
-                <%#= cart_count_over_one %>
-                <%# </span> %>
-              <%# end %>
-            <%#end %>
 
             <% if user_signed_in? %>
             <div class="subtitle log-in-div">
               <h4 class="log-in-text">Logged in as: <%= current_user.email %></h4>
             </div>
+
+            <%# Shopping cart icon displays how many items are in the cart %>
+             <% if cart_has_items %>
+              <%= link_to cart_path(@cart), class:"navbar-item button is-primary" do %>
+              <span class="icon is-small">
+                <i class="fa fa-shopping-cart"></i>
+              </span>
+              <span>Cart 
+                <%= cart_count_over_one %>
+              </span>
+              <% end %>
+            <%end %>
+            
               <%= link_to 'Create a new listing', new_sticker_path, class: "navbar-item button is-warning has-text-black" %>
 
               <div class="navbar-item has-dropdown is-hoverable">
@@ -46,6 +48,8 @@
                 </div>
               </div>
             <% else %>
+
+          
 
             <%= link_to "Sign In", new_user_session_path, class:"navbar-item button is-white" %>
             <%= link_to "Sign up", new_user_registration_path, class:"navbar-item button is-white"%>

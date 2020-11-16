@@ -23,7 +23,6 @@
     </div>
 </div> 
 
-
 <div class="tile is-ancestor">
 <div class="tile is-parent is-8">
       <article class="tile is-child title-tile">
@@ -46,13 +45,13 @@
 </div>
 
 <%# Vertical column on right hand side of page containing cart/buying options  %>
-<div class="tile is-parent is-4">
-    <article class="tile is-child notification is-light">
+<div class="tile is-parent is-4 "> 
+    <article class="tile is-child buy-tile notification is-light">
       <div class="content">
         <p class="title">Buy it now!</p>
         <p class="subtitle">For delivery information, please contact the seller</p>
-          <div class="content">
-             <%#= button_to 'Add to cart', line_items_path(sticker_id: @sticker), class: 'button is-warning add-to-cart' %>
+          <div>
+             <%= button_to 'Add to cart', cart_items_path(sticker_id: @sticker), class: 'button is-primary has-text-black'%>
           </div>
       </div>
     </article>
