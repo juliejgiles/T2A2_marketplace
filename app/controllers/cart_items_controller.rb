@@ -1,5 +1,8 @@
 class CartItemsController < ApplicationController
+  include CurrentCart
   before_action :set_cart_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_cart, only: [:create]
+
 
   # GET /cart_items
   # GET /cart_items.json
@@ -24,11 +27,13 @@ class CartItemsController < ApplicationController
   # POST /cart_items
   # POST /cart_items.json
   def create
-    @cart_item = CartItem.new(cart_item_params)
+    
+    sticker = Sticker.find(params[:sticker_id])
+    @cart_item = @cart.add_sticker(cart_item_params)
 
     respond_to do |format|
       if @cart_item.save
-        format.html { redirect_to @cart_item, notice: 'Cart item was successfully created.' }
+        format.html { redirect_to @cart_item.cart, notice: 'Sticker added to cart!' }
         format.json { render :show, status: :created, location: @cart_item }
       else
         format.html { render :new }
@@ -71,4 +76,16 @@ class CartItemsController < ApplicationController
     def cart_item_params
       params.require(:cart_item).permit(:sticker_id, :cart)
     end
+end
+
+module CurrentCart
+  #creates a session for the shopping cart
+  # if the Cart cannot be found, a new cart is created where the id of the session is the cart id
+
+  def set_cart
+      @cart = Cart.find(session[:cart_id])
+  rescue ActiveRecord::RecordNotFound
+      @cart = Cart.create
+      session[:cart_id] = @cart.id
+  end
 end

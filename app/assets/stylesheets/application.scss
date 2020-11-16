@@ -46,7 +46,39 @@ a.hover {
     font-weight: 600;
 }
 
+.log-in-div {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.log-in-text {
+    color: white;
+    font-weight: 600;
+}
+
 //STYLING FOR INDEX PAGE
+
+.greeting-text {
+    color: #f05454;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.browse {
+    margin-left: 40px;
+    background-color: #ECECEC;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.results {}
+
+.category {
+    padding-right: 20px;
+}
 
 .sticker-index-grid {
     display: grid;
@@ -129,17 +161,16 @@ a.hover {
     }
 
     .thumb-background {
-        background-color: #F5F5F5;
+        background-color: #ECECEC;
         width: 100%;
         height: 290px;
+        border-radius: 20px;
     }
 
     .image-holder {
         justify-content: center;
         text-align: center;
     }
-
-
 
     .sticker-text {
         padding-top: var(--spacing-medium);
@@ -150,7 +181,6 @@ a.hover {
     padding: 5px;
     background-color: white;
     margin: 20px;
-
 }
 
 .preview {
@@ -176,6 +206,8 @@ a.hover {
     text-align: center;
     color: white;
     padding: 10px;
+    font-size: 1.5rem;
+    font-style: italic;
 }
 
 //Zooming in on image of sticker when mouse hovers over it 
@@ -192,6 +224,8 @@ img:hover {
 .title-tile {
     padding-top: 50px;
     color: darkgrey;
+    justify-content: center;
+    text-align: center;
 }
 
 .default-image-holder {
@@ -252,4 +286,20 @@ img:hover {
 .new-listing-form {
     margin-top: 50px;
     background-color: #e99898;
+}
+
+
+//STYLING FOR NEW USER SIGN_UP PAGE
+.margin-column {
+    padding: 20px 50px;
+}
+
+
+//STYLING FOR NEW STICKER LISTING
+.margin-column1 {
+    padding: 20px 65px;
+}
+
+.margin-column2 {
+    padding: 20px 40px;
 }

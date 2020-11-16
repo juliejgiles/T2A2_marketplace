@@ -1,4 +1,7 @@
 class CartsController < ApplicationController
+  # If the Cart isn't found, then we will rescue the error with our own invalid_cart method below
+rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
+
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
   # GET /carts
@@ -54,7 +57,9 @@ class CartsController < ApplicationController
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
-    @cart.destroy
+    # For validation, the user's session must be the same as the cart ID and then the cart will be destroyed
+    @cart.destroy if @cart.id == session[:card_id]
+    session[:card_id] = nil
     respond_to do |format|
       format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
       format.json { head :no_content }
@@ -62,13 +67,19 @@ class CartsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # Finds the cart using the ID passed via the params and assigns this to the cart variable so it can be used elsewhere
     def set_cart
       @cart = Cart.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    # Whitelist which allows the below list of trusted parameters through.
     def cart_params
       params.fetch(:cart, {})
+    end
+
+    # Custom rescue method in the event the Cart cannot be found
+    def invalid_cart
+      logger.error "Cart cannot be accessed - #{params[:id]}"
+      redirect_to root_path, notice:  "Cart cannot be accessed. Please try again."
     end
 end

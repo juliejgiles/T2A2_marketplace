@@ -5,9 +5,21 @@ class StickersController < ApplicationController
   # GET /stickers
   # GET /stickers.json
   #Stickers will be shown on the index page in the order from the newest created to the oldest
+ 
   def index
     @stickers = Sticker.all.order("created_at desc")
+ 
+    #search function below works by comparing the :search param against the Sticker's attribute data. Guard statement to ensure search term is made downcase and white spaces removed
+      if params[:search] && params[:search] != ""
+        search_term = params[:search].downcase.gsub(/\s+/, "")
+        @stickers = Sticker.all.select { |sticker|
+          sticker.title.include?(search_term) || 
+          sticker.description.include?(search_term) || 
+          sticker.material.include?(search_term) || 
+          sticker.finish.include?(search_term) }
+      end
   end
+
 
   # GET /stickers/1
   # GET /stickers/1.json
@@ -78,6 +90,6 @@ class StickersController < ApplicationController
 
     # Whitelist of trusted parameters that will be let through.
     def sticker_params
-      params.require(:sticker).permit(:title, :description, :finish, :material, :price, :image)
+      params.require(:sticker).permit(:title, :description, :finish, :material, :price, :image, :search)
     end
 end

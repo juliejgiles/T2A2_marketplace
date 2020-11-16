@@ -8,7 +8,6 @@
     <%# Responsive viewport meta tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%# Links to stylesheets %>
-    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -17,9 +16,17 @@
   <body class="<%= yield (:body_class) %>" >
 
 <%# Renders the navbar partial located in views> shared> _nav.html.erb %>
-<%#= render 'shared/nav' %>
+<%=render 'shared/nav'%>
 
 
+<%# Renders a greeting to the user's username if they are signed in %>
+<% if user_signed_in? %>
+  <div class="subtitle log-in-div">
+    <h2 class="greeting-text">Hi <%= current_user.username %>!</h2>
+  </div>
+<% end %>
+
+<%# Renders the search section  %>
 
 <%# Flash notification when user has successfully signed in %>
  <% if flash[:notice] %>
@@ -37,65 +44,10 @@
     </div>
     <% end %>
      
-   <%# Navbar %>    
+ 
 
   
-     <nav class="navbar is-primary" role="navigation" aria-label="main navigation" style="background-color: #f05454;">
-      <div class="navbar-brand">
-        <%= link_to root_path, class:"navbar-item" do %>
-           <span class="icon is-large fas fa-3x tag3">
-                <i class="far fa-sticky-note"></i>    
-          </span>
-          <h1 class="brand-title is-3">StickerStation</h1>
-        <% end  %>
-
-
-      <div class="navbar-burger burger" data-target="navbar" >
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-
-      <div id="navbar" class="navbar-menu">
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="field is-grouped">
-            
-            <%# if cart_has_items %>
-              <%#= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
-              <%# <span class="icon is-small">
-                <i class="fa fa-shopping-cart"></i>
-              </span>
-              <span>Cart %>
-                <%#= cart_count_over_one %>
-                <%# </span> %>
-              <%# end %>
-            <%#end %>
-
-            <% if user_signed_in? %>
-              <%= link_to 'Create a new listing', new_sticker_path, class: "navbar-item button is-warning" %>
-
-              <div class="navbar-item has-dropdown is-hoverable">
-                <%= link_to 'My Account', edit_user_registration_path, class: "navbar-link" %>
-                <div class="navbar-dropdown is-right">
-                  <%= link_to current_user.name, edit_user_registration_path, class:"navbar-item" %>
-                  <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
-                </div>
-              </div>
-            <% else %>
-
-            <%= link_to "Sign In", new_user_session_path, class:"navbar-item button is-white" %>
-            <%= link_to "Sign up", new_user_registration_path, class:"navbar-item button is-white"%>
-
-            <% end %>
-
-            </div>
-          </div>
-        </div>
-    </div>
-  </nav>
-
+     
   <%= yield(:header) %>
 
   <div class="container">

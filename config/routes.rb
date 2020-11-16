@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
+  
   resources :cart_items
   resources :carts
   resources :stickers
   devise_for :users, controllers: {
     registrations: 'registrations'
   }
-
+  
+  
   root to: 'stickers#index'
-
+  get '*path', to: 'stickers#index', via: :all
   
   
 

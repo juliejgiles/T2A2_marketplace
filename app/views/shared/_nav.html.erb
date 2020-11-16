@@ -1,47 +1,61 @@
-<%#Navbar partial based on Bootstrap templates - https://getbootstrap.com/docs/4.5/components/navbar/%>
-
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f05454;">
-  <a class="navbar-brand" href="#">StickerStation</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-<%#Search box%>
- <form class="form-inline my-2 my-lg-0 w-75 p-3">
-      <input class="form-control mr-sm-2 w-75 p-3" type="search" placeholder="Search for stickers" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation" style="background-color: #f05454;">
+      <div class="navbar-brand">
+        <%= link_to root_path, class:"navbar-item" do %>
+           <span class="icon is-large fas fa-3x tag3">
+                <i class="far fa-sticky-note"></i>    
+          </span>
+          <h1 class="brand-title is-3">StickerStation</h1>
+        <% end  %>
 
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+      <div class="navbar-burger burger" data-target="navbar" >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
 
-      <li class="nav-item">
-        <a class="nav-link" href="#">Sign in</a>
-      </li>
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped">
+            
+            <%# if cart_has_items %>
+              <%#= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
+              <%# <span class="icon is-small">
+                <i class="fa fa-shopping-cart"></i>
+              </span>
+              <span>Cart %>
+                <%#= cart_count_over_one %>
+                <%# </span> %>
+              <%# end %>
+            <%#end %>
 
-      <li class="nav-item">
-        <a class="nav-link" href="#">Log out</a>
-      </li>
+            <% if user_signed_in? %>
+            <div class="subtitle log-in-div">
+              <h4 class="log-in-text">Logged in as: <%= current_user.email %></h4>
+            </div>
+              <%= link_to 'Create a new listing', new_sticker_path, class: "navbar-item button is-warning has-text-black" %>
 
-      <li class="nav-item">
-        <a class="nav-link" href="#">Cart</a>
-      </li>
+              <div class="navbar-item has-dropdown is-hoverable">
+               
+                <%= link_to 'My Account', edit_user_registration_path, class: "navbar-link button is-primary has-text-black" %>
+                <div class="navbar-dropdown is-right">
+                  <%= link_to current_user.name, edit_user_registration_path, class:"navbar-item" %>
+                  <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
+                </div>
+              </div>
+            <% else %>
 
+            <%= link_to "Sign In", new_user_session_path, class:"navbar-item button is-white" %>
+            <%= link_to "Sign up", new_user_registration_path, class:"navbar-item button is-white"%>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="browse-item" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Browse by category
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+            <% end %>
+
+            </div>
+          </div>
         </div>
-      </li>
+    </div>
+  </nav>
 
-    </ul>
-   
-  </div>
-</nav>
+

@@ -1,25 +1,72 @@
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+<%= f.error_notification %>
+<%# Creates an error notfication message which appears when the form object has some error %>
+<%= f.error_notification message: "Something went wrong, please try again" %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
+<%# adding inputs to the forms using the bulma styling framework %>
+  <div class="new-listing-form">
+    <div class="columns">
+      <div class="inputs column is-6 margin-column">
+          <div class="control">
+            <label class="label">Name </label>
+          </div>
+          <div class="control">
+            <%= f.input :email, required: true,input_html: { class: "input"}, autofocus: true, wrapper: false, label: false, placeholder: "First and Last Name"%>
+          </div>
+      </div>
+      
+      <%# Username input %>
+      <div class="inputs column is-6 margin-column">
+          <div class="control">
+            <label class="label">Username (required)</label>
+          </div>
+          <div class="control">
+            <%= f.input :username, required: true,input_html: { class: "input"}, autofocus: true, wrapper: false, label: false, placeholder: "Made up of letters and numbers" %>
+          </div>
+      </div>
+    </div>
+    
+    <%# Email input %>
+    <div class="columns">
+      <div class="inputs column is-6 margin-column">
+          <div class="control">
+            <label class="label">Email (required)</label>
+          </div>
+          <div class="control">
+            <%= f.input :email, required: true,input_html: { class: "input"}, autofocus: true, wrapper: false, label: false, placeholder: "Email"%>
+          </div>
+      </div>
+    </div>
+    <%# Password input %>
+    <div class="columns">
+      <div class="inputs column is-6 margin-column">
+          <div class="control">
+            <label class="label">Password (required)</label>
+          </div>
+          <div class="control">
+            <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" }, wrapper: false, label: false, placeholder: "Confirm password"%>
+          </div>
+      </div>
+      
+      <div class="inputs column is-6 margin-column">
+          <div class="control">
+            <label class="label">Confirm password (required)</label>
+          </div>
+          <div class="control">
+            <%= f.input :password_confirmation, required: true,input_html: { autocomplete: "new-password" }, autofocus: true, wrapper: false, label: false, placeholder: "Confirm password"%>
+          </div>
+      </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    </div>
+
+
+
+  <div class="form-actions control">
+    <button class="button is-primary">
+      <%= f.button :submit, "Sign up" %>
+    </button>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>

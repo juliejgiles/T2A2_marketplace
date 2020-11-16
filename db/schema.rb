@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_16_050522) do
+ActiveRecord::Schema.define(version: 2020_11_16_053014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cart_items", force: :cascade do |t|
-    t.bigint "sticker_id", null: false
+    t.bigint "sticker_id"
     t.bigint "cart_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "quantity", default: 1
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["sticker_id"], name: "index_cart_items_on_sticker_id"
   end
@@ -51,11 +52,12 @@ ActiveRecord::Schema.define(version: 2020_11_16_050522) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
-    t.string "username"
+    t.string "username", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "stickers"
   add_foreign_key "stickers", "users"
 end
