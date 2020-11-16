@@ -27,6 +27,11 @@
 <% end %>
 
 <%# Renders the search section  %>
+<%=render 'shared/search'%>
+
+
+
+
 
 <%# Flash notification when user has successfully signed in %>
  <% if flash[:notice] %>
@@ -44,16 +49,10 @@
     </div>
     <% end %>
      
- 
-
-  
-     
   <%= yield(:header) %>
 
   <div class="container">
-
     <%= yield %>
-
   </div>
 
   </body>

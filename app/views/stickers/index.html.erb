@@ -1,11 +1,4 @@
 
-<h4>
-  <%= form_tag(stickers_path, method: "GET") do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search 🔍 "%>
-  <% end %>
-</h4>
-
 <% content_for :header do %>
     <div class="hero-body">
       <div class="container">

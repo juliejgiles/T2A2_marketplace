@@ -1,0 +1,12 @@
+<div class="column ">
+       <span class="icon no-preview-icon search-margin-icon is-large fas fa-2x">
+          <i class="fas fa-search"></i>    
+      </span>
+      <label class="subtitle search-margin is-5">Find a sticker!</label>
+       <span class="search-margin">
+            <%= form_tag(stickers_path, method: "GET", class: "form-tag-class") do %>
+                  <%= text_field_tag :search, params[:search] %>
+                  <%= submit_tag "Search 🔍 "%>
+            <% end %>
+      </span>
+<div>
