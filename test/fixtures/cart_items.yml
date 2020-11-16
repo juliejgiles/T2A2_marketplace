@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sticker: one
+  cart: 
+
+two:
+  sticker: two
+  cart: 

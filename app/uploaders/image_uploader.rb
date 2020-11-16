@@ -35,7 +35,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   #Default image size will be 800 x 600px
   version :default do
-    process resize_to_fit: [800, 600]
+    process resize_to_fit: [500, 500]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

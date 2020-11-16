@@ -29,17 +29,19 @@
       <article class="tile is-child title-tile">
         <p class="title"><%= @sticker.title %> </p>
         <p class="subtitle">Designed by <%= @sticker.user.name %></p>
-        <div class="content">
-            <div class="image-holder">
-              <div class="feature-image show-image-bg">
-                <% if @sticker.image? %>
-                  <%= image_tag(@sticker.image_url(:default).to_s) %>
-                <% else  %>
-                  <h1 class="preview"> No Preview Available </h1>
-                <% end %>
-              </div>
-            </div>
-        </div>
+            <div class="container default-image-holder">
+              <% if @sticker.image? %>
+                <%= link_to image_tag(@sticker.image_url(:default).to_s), @sticker %>
+              <% else  %>
+                <h1 class="preview"> No Preview Available </h1>
+                <span class="icon no-preview-icon is-large fas fa-4x">
+                      <i class="far fa-meh-blank"></i>    
+                </span>
+                <div class="see-more">
+                  <%= link_to "Read more about this sticker ", @sticker %>
+                </div>
+              <% end %>
+          </div>
       </article>
 </div>
 
@@ -47,8 +49,8 @@
 <div class="tile is-parent is-4">
     <article class="tile is-child notification is-light">
       <div class="content">
-        <p class="title">Tall tile</p>
-        <p class="subtitle">With even more content</p>
+        <p class="title">Buy it now!</p>
+        <p class="subtitle">For delivery information, please contact the seller</p>
           <div class="content">
              <%#= button_to 'Add to cart', line_items_path(sticker_id: @sticker), class: 'button is-warning add-to-cart' %>
           </div>
