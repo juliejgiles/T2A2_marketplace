@@ -107,6 +107,19 @@ a.hover {
             right: 15px;
             color: darkgrey;
         }
+
+        .tag4 {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: darkgrey;
+        }
+
+        .edit-functions {
+            position: absolute;
+            bottom: 7px;
+            right: 0;
+        }
     }
 
     .sticker-thumb {
@@ -116,7 +129,7 @@ a.hover {
     }
 
     .thumb-background {
-        background-color: #F8F8F8;
+        background-color: #F5F5F5;
         width: 100%;
         height: 290px;
     }
@@ -158,6 +171,13 @@ a.hover {
     color: #6d6875;
 }
 
+.most-viewed-title {
+    background-color: #f05454;
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+
 //Zooming in on image of sticker when mouse hovers over it 
 img {
     transition: transform .4s;
@@ -169,6 +189,11 @@ img:hover {
 
 //STYLIGN FOR SHOW PAGE
 
+.title-tile {
+    padding-top: 50px;
+    color: darkgrey;
+}
+
 .show-content {
     padding: var(--spacing-large);
     margin-top: var(--spacing-medium);
@@ -177,7 +202,7 @@ img:hover {
 }
 
 .show-image-bg {
-    background-color: #F8F8F8;
+    background-color: #F5F5F5;
     justify-content: center;
     text-align: center;
     border-radius: 20px;

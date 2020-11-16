@@ -16,20 +16,28 @@
         <div class="sticker-thumb">
             <%# The Carrierwave gem allows us to link to the image path to display its thumbnail size on the index page %>
           <div class="container image-holder">
-                <% if sticker.image? %>
+              <% if sticker.image? %>
                 <%= link_to image_tag(sticker.image_url(:thumb).to_s), sticker %>
               <% else  %>
                 <h1 class="preview"> No Preview Available </h1>
                 <span class="icon no-preview-icon is-large fas fa-4x">
                       <i class="far fa-meh-blank"></i>    
                 </span>
-              <div class="see-more">
-                <%= link_to "Read more about this sticker ", sticker %>
-              </div>
+                <div class="see-more">
+                  <%= link_to "Read more about this sticker ", sticker %>
+                </div>
               <% end %>
           </div>
 
-          <%# Favourites icon %>
+          <%# Shopping cart icon to allow customers to quickly add an item to cart %>
+            <span class="icon is-large fas fa-lg tag4">
+              <span class="fa-stack">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+              </span>
+          </span>
+
+          <%# Favourites heart icon %>
           <span class="icon is-large fas fa-lg tag3">
             <span class="fa-stack">
                 <i class="fas fa-circle fa-stack-2x"></i>
@@ -58,19 +66,95 @@
         <p class="has-text-gray sold-by">Designed by <%= sticker.user.name %></p>
                 
 
-        <% if sticker_author(sticker) %>
-            <%= link_to 'Edit', edit_sticker_path(sticker), class: "button is-small" %>
-            <%= link_to 'Delete', sticker, method: :delete, data: { confirm: "Are you sure you want to delete this sticker listing?" }, class: "button is-small" %>
-        <% end %>
-
+        <div class="container edit-functions">
+          <% if sticker_author(sticker) %>
+              <%= link_to 'Edit', edit_sticker_path(sticker), class: "button is-small is-black" %>
+              <%= link_to 'Delete', sticker, method: :delete, data: { confirm: "Are you sure you want to delete this sticker listing?" }, class: "button is-small is-black" %>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>
 </div>
 
+<div class="hero-body">
+      <div class="container">
+        <h1 class="title most-viewed-title">Latest trending stickers!</h1>
+      <div>
+    </div>
 
- 
-        
+<div class="sticker-index-grid">
+  <% @stickers.each do |sticker| %>
+
+   <div class="sticker box-padding">
+      <div class="thumb-background">
+        <div class="sticker-thumb">
+            <%# The Carrierwave gem allows us to link to the image path to display its thumbnail size on the index page %>
+          <div class="container image-holder">
+                <% if sticker.image? %>
+                <%= link_to image_tag(sticker.image_url(:thumb).to_s), sticker %>
+              <% else  %>
+                <h1 class="preview"> No Preview Available </h1>
+                <span class="icon no-preview-icon is-large fas fa-4x">
+                      <i class="far fa-meh-blank"></i>    
+                </span>
+              <div class="see-more">
+                <%= link_to "Read more about this sticker ", sticker %>
+              </div>
+              <% end %>
+          </div>
+
+          <%# Shopping cart icon to allow customers to quickly add an item to cart %>
+            <span class="icon is-large fas fa-lg tag4">
+              <span class="fa-stack">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+              </span>
+          </span>
+
+          <%# Favourites heart icon %>
+          <span class="icon is-large fas fa-lg tag3">
+            <span class="fa-stack">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-heart fa-stack-1x fa-inverse"></i>
+            </span>
+          </span>
+
+          <%# If user has entered a Finish for the sticker and has uploaded a picture of the sticker, the finish will be displayed. %>
+          <% if sticker.finish? && sticker.image? %>
+                <div class="tag1">
+                  <span class="tag is-warning"><%= sticker.finish %></span>
+                </div>
+          <% end %>
+          <%# If user has entered a Material for the sticker and has uploaded a picture of the sticker, the material will be displayed. %>
+          <% if sticker.material? && sticker.image? %>
+                <div class="tag2">
+                  <span class="tag is-primary"><%= sticker.material %></span>
+                </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div>
+
+      </div>
+
+      <div class="sticker-text">
+        <p class="has-text-left price">From <%= number_to_currency(sticker.price)%></p>
+        <h3 class="sticker-title"><%= link_to sticker.title, sticker %></h3>
+        <p class="has-text-gray sold-by">Designed by <%= sticker.user.name %></p>
+                
+
+        <div class="container edit-functions">
+          <% if sticker_author(sticker) %>
+              <%= link_to 'Edit', edit_sticker_path(sticker), class: "button is-small is-black" %>
+              <%= link_to 'Delete', sticker, method: :delete, data: { confirm: "Are you sure you want to delete this sticker listing?" }, class: "button is-small is-black" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 
 
