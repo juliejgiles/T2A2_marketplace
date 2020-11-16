@@ -1,5 +1,29 @@
 <%content_for :body_class %>
 
+<div class="column">
+
+    <div class="other-views">
+      <div class="idea-icon-container">
+          <span class="icon idea-icon is-large fas fa-3x">
+              <i class="fas fa-lightbulb"></i>    
+          </span>
+           <span class="icon idea-icon is-large fas fa-3x">
+              <i class="fas fa-lightbulb"></i>    
+          </span>
+           <span class="icon idea-icon is-large fas fa-3x">
+              <i class="fas fa-lightbulb"></i>    
+          </span>
+  
+  </div>
+      <h3 class="subtitle recommendations is-3 ">Got a custom sticker idea? </h3>  
+          
+      <h3 class="subtitle recommendations is-5 ">Contact a seller today to get a quote!</h3>   
+    </div>
+    <div class="bg-white pa4 border-radius-3">
+    </div>
+</div> 
+
+
 <div class="tile is-ancestor">
 <div class="tile is-parent is-8">
       <article class="tile is-child title-tile">
@@ -26,15 +50,14 @@
         <p class="title">Tall tile</p>
         <p class="subtitle">With even more content</p>
           <div class="content">
-            <!-- Content -->
+             <%#= button_to 'Add to cart', line_items_path(sticker_id: @sticker), class: 'button is-warning add-to-cart' %>
           </div>
       </div>
     </article>
   </div>
 </div>
 
-<div class="columns">
-
+<%# Styling for the column underneath the product image containing information about that sticker %>
   <div class="column is-8">
       <h4 class="title price"><%= number_to_currency(@sticker.price) %></h4>
     <div class="sticker-text">
@@ -51,36 +74,28 @@
         <% end %>
       </p>
     </div>
-    
-
-
-    
-        <div class="show-content">
-              <h3 class="subtitle description is-4">Description</h3>
-              <%= @sticker.description %>
-
-            <div class="other-views">
-                <h3 class="subtitle recommendations is-4 ">Items recommended for you:</h3>
-                <table class="table is-narrow">
-                  <tr>
-                    <td class="has-text-weight-bold">TEST-TITLE</td>
-                    <td><%= @sticker %></td>
-                  </tr>
-            </div>
-        </div>
-      
- 
+  
+    <div class="show-content">
+      <h3 class="subtitle description is-4">Description</h3>
+        <%= @sticker.description %>
+    </div>
   </div>
 
   <%# Box of items recommended for the user  %>
-     <div class="column is-3 is-offset-1">
-      
-                  <div class="bg-white pa4 border-radius-3">
-                    <h4 class="is-5 has-text-centered price"><%= number_to_currency(@sticker.price) %></h4>
-                    <p class="has-text-centered mb4">Designed by <%= @sticker.user.name %></p>
-                    <%#= button_to 'Add to cart', line_items_path(sticker_id: @sticker), class: 'button is-warning add-to-cart' %>
-                  </div>
-      </div>
+  <div class="column">
+    <div class="other-views">
+      <h3 class="subtitle recommendations is-4 ">People who have bought this sticker have also bought:</h3>
+        <table class="table is-narrow">
+            <tr>
+              <td class="has-text-weight-bold">TEST-TITLE</td>
+              <td><%= @sticker %></td>
+            </tr>
+    </div>
+    <div class="bg-white pa4 border-radius-3">
+        <h4 class="is-5 has-text-centered price"><%= number_to_currency(@sticker.price) %></h4>
+        <p class="has-text-centered mb4">Designed by <%= @sticker.user.name %></p>
+    </div>
+  </div> 
    
-</div>
+
 

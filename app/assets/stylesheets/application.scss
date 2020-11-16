@@ -78,7 +78,7 @@ a.hover {
             left: 10px;
             color: #5c6b73;
             font-weight: 600;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             padding-top: var(--spacing-small);
         }
 
@@ -229,8 +229,23 @@ img:hover {
     padding-top: var(--spacing-extra-large);
     font-size: 1.3rem;
     font-weight: 400;
+    color: black;
 }
 
 .description {
     margin-top: 30px;
+}
+
+.idea-icon {
+    color: white;
+}
+
+.idea-icon-container {
+    padding-bottom: 15px;
+}
+
+//STYLING FOR NEW STICKER LISTING PAGE at Views>Stickers>new.html.erb which renders the _form partial
+.new-listing-form {
+    margin-top: 50px;
+    background-color: #e99898;
 }

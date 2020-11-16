@@ -83,3 +83,6 @@ gem "mini_magick"
 
 #adds font-awesome, which is used for the heart icons on each sticker 
 gem 'font-awesome-sass', '~> 5.15.1'
+
+#adds the Coffeescript gem for compiling javascript 
+gem 'coffee-script-source'

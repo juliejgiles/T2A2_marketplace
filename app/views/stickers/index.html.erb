@@ -69,7 +69,7 @@
         <div class="container edit-functions">
           <% if sticker_author(sticker) %>
               <%= link_to 'Edit', edit_sticker_path(sticker), class: "button is-small is-black" %>
-              <%= link_to 'Delete', sticker, method: :delete, data: { confirm: "Are you sure you want to delete this sticker listing?" }, class: "button is-small is-black" %>
+              <%= link_to 'Destroy', sticker, method: :delete, data: { confirm: "Are you sure you want to delete this sticker listing?" }, class: "button is-small is-black" %>
           <% end %>
         </div>
       </div>
@@ -77,9 +77,11 @@
   <% end %>
 </div>
 
+<%# Section of most purchased stickers  %>
+
 <div class="hero-body">
       <div class="container">
-        <h1 class="title most-viewed-title">Latest trending stickers!</h1>
+        <h1 class="title most-viewed-title">Most purchased stickers!</h1>
       <div>
     </div>
 
@@ -135,10 +137,6 @@
         </div>
       </div>
 
-      <div>
-
-      </div>
-
       <div class="sticker-text">
         <p class="has-text-left price">From <%= number_to_currency(sticker.price)%></p>
         <h3 class="sticker-title"><%= link_to sticker.title, sticker %></h3>
@@ -148,7 +146,7 @@
         <div class="container edit-functions">
           <% if sticker_author(sticker) %>
               <%= link_to 'Edit', edit_sticker_path(sticker), class: "button is-small is-black" %>
-              <%= link_to 'Delete', sticker, method: :delete, data: { confirm: "Are you sure you want to delete this sticker listing?" }, class: "button is-small is-black" %>
+              <%= link_to 'Destroy', sticker, method: :delete, confirm: "Are you sure you want to delete this sticker listing?", class: "button is-small is-black" %>
           <% end %>
         </div>
       </div>

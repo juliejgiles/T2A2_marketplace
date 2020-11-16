@@ -56,20 +56,27 @@ class StickersController < ApplicationController
   # DELETE /stickers/1
   # DELETE /stickers/1.json
   def destroy
+    @sticker = Sticker.find(params[:id])
     @sticker.destroy
+    
     respond_to do |format|
-      format.html { redirect_to stickers_url, notice: 'Sticker was successfully destroyed.' }
-      format.json { head :no_content }
+      if  @sticker.destroy
+        format.html { redirect_to stickers_path, notice: 'Sticker was successfully destroyed.' }
+        format.json { head :no_content }
+      else 
+        format.html { redirect_to stickers_url, notice: 'An error occured - please try again.' }
+        format.json { head :no_content }
+      end
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # Assigns the current sticker being passed through the params to a variable @sticker so that it can be accessed elsewhere
     def set_sticker
       @sticker = Sticker.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    # Whitelist of trusted parameters that will be let through.
     def sticker_params
       params.require(:sticker).permit(:title, :description, :finish, :material, :price, :image)
     end

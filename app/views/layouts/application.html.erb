@@ -74,7 +74,7 @@
             <%#end %>
 
             <% if user_signed_in? %>
-              <%= link_to 'Create a new listing', new_sticker_path, method: :new, class: "navbar-item button is-warning" %>
+              <%= link_to 'Create a new listing', new_sticker_path, class: "navbar-item button is-warning" %>
 
               <div class="navbar-item has-dropdown is-hoverable">
                 <%= link_to 'My Account', edit_user_registration_path, class: "navbar-link" %>
