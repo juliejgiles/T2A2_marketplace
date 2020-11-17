@@ -1,41 +1,116 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+    <div class="hero-body">
+      <div class="container">
+        <h2>Edit <%= resource_name.to_s.humanize %></h2>
+      <div>
+    </div>
+
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+<%= f.error_notification %>
+<%# Creates an error notfication message which appears when the form object has some error %>
+<%= f.error_notification message: "Something went wrong, please try again" %>
 
-  <div class="form-inputs new-listing-form">
-    <div class="field">
-        <label class="label">Name</label>
+<%# adding inputs to the forms using the bulma styling framework %>
+  <div class="new-listing-form">
+    <div class="columns">
+      <div class="inputs column is-6 margin-column">
           <div class="control">
-               <%= f.input :email, required: true, autofocus: true, label: false %>
+            <label class="label">Name </label>
           </div>
+          <div class="control">
+            <%= f.input :email, required: true,input_html: { class: "input"}, autofocus: true, wrapper: false, label: false %>
+          </div>
+      </div>
+
+      <%# Username input %>
+      <div class="inputs column is-6 margin-column">
+          <div class="control">
+            <label class="label">Username (required)</label>
+          </div>
+          <div class="control">
+            <%= f.input :username, required: true,input_html: { class: "input"}, autofocus: true, wrapper: false, label: false, placeholder: "Made up of letters and numbers" %>
+          </div>
+      </div>
     </div>
-   
+
+    <%# Email input %>
+    <div class="columns">
+      <div class="inputs column is-6 margin-column">
+          <div class="control">
+            <label class="label">Email (required)</label>
+          </div>
+          <div class="control">
+            <%= f.input :email, required: true,input_html: { class: "input"}, autofocus: true, wrapper: false, label: false, placeholder: "Email"%>
+          </div>
+      </div>
+    </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password,
+    <%# Password input %>
+    <div class="columns">
+      <div class="inputs column is-6 margin-column">
+          <div class="control">
+            <label class="label">Password </label>
+          </div>
+          <div class="control">
+            <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
+          </div>
+      </div>
+    </div> 
+
+    <div class="columns">
+      <div class="inputs column is-6 margin-column">
+          <div class="control">
+            <label class="label">Password </label>
+          </div>
+          <div class="control">
+            <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+          </div>
+      </div>
+    
+     <%# Password required to confirm changes made to User account %>
+       
+          <div class="inputs column is-6 margin-column">
+            <div class="control">
+              <label class="label">Confirm changes </label>
+            </div>
+            <div class="control">
+              <%= f.input :current_password,
+                  required: true,
+                  input_html: { autocomplete: "current-password" } %>
+            </div>
+        </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+  <div class="form-actions control">
+    <button class="button is-primary">
+      <%= f.button :submit, "Update" %>
+    </button>
   </div>
+
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3 class="subtitle"> Close account</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <div class="form-actions control">
+    <button class="button is-primary">
+       <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+    </button>
+  </div>
 
-<%= link_to "Back", :back %>
+  <div class="form-actions control">
+    <button class="button is-warning">
+       <%= link_to "Back", :back %>
+    </button>
+  </div>
+
+

@@ -39,8 +39,6 @@
           </span>
           </div>
             
-        
-
           <%# Favourites heart icon %>
           <span class="icon is-large fas fa-lg tag3">
             <span class="fa-stack">
@@ -67,7 +65,7 @@
       <div class="sticker-text">
         <p class="has-text-left price">From <%= number_to_currency(sticker.price)%></p>
         <h3 class="sticker-title"><%= link_to sticker.title, sticker %></h3>
-        <p class="has-text-gray sold-by">Designed by <%= sticker.user.name %></p>
+        <p class="has-text-gray sold-by">Designed by <%= sticker.user.username %></p>
                 
 
         <div class="container edit-functions">
@@ -142,7 +140,7 @@
       <div class="sticker-text">
         <p class="has-text-left price">From <%= number_to_currency(sticker.price)%></p>
         <h3 class="sticker-title"><%= link_to sticker.title, sticker %></h3>
-        <p class="has-text-gray sold-by">Designed by <%= sticker.user.name %></p>
+        <p class="has-text-gray sold-by">Designed by <%= sticker.user.username %></p>
                 
 
         <div class="container edit-functions">
