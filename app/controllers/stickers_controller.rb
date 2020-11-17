@@ -7,7 +7,8 @@ class StickersController < ApplicationController
   #Stickers will be shown on the index page in the order from the newest created to the oldest
  
   def index
-    @stickers = Sticker.all.order("created_at desc")
+    # Query method ".includes" used to minimise database calls by allowing us to access the stickers that are associated with the User model
+    @stickers = Sticker.all.order("created_at desc").includes(:user)
  
     #search function below works by comparing the :search param against the Sticker's attribute data. Guard statement to ensure search term is made downcase and white spaces removed
       if params[:search] && params[:search] != ""

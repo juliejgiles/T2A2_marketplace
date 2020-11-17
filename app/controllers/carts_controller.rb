@@ -6,8 +6,9 @@ class CartsController < ApplicationController
 
   # GET /carts
   # GET /carts.json
+  # Query method ".includes" used to minimise database calls by allowing us to access the stickers and cart_items attributes
   def index
-    @carts = Cart.all
+    @carts = Cart.all.includes(:sticker, :cart_item)
   end
 
   # GET /carts/1

@@ -21,11 +21,11 @@
 <%# Renders a greeting to the user's username if they are signed in %>
 <% if user_signed_in? %>
   <div class="subtitle log-in-div">
-    <h2 class="greeting-text">User: <%= current_user.username %></h2>
+    <h4 class="greeting-text">User: <%= current_user.username %></h4>
   </div>
 <% end %>
 
-<%# Renders the search section  %>
+<%# Renders the search section %>
 <%=render 'shared/search'%>
 
 <%# Flash notification when user has successfully signed in %>
