@@ -14,5 +14,5 @@ class User < ApplicationRecord
   scope :sellers, -> { joins(:sales) }
   scope :buyers, -> { joins(:purchases) }
 
-  has_secure_password
+  
 end

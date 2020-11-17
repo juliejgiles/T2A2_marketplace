@@ -40,6 +40,7 @@ class StickersController < ApplicationController
   # POST /stickers.json
   def create
     @sticker = current_user.stickers.build(sticker_params)
+    @sticker.user.name = current_user.name
 
     respond_to do |format|
       if @sticker.save
