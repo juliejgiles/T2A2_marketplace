@@ -68,7 +68,7 @@ class StickersController < ApplicationController
   # DELETE /stickers/1
   # DELETE /stickers/1.json
   def destroy
-    @sticker = Sticker.find(params[:id])
+    # @sticker = Sticker.find(params[:id])
     @sticker.destroy
     
     respond_to do |format|

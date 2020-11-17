@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   # If the Cart isn't found, then we will rescue the error with our own invalid_cart method below
-rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
@@ -58,13 +58,14 @@ rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
   # DELETE /carts/1.json
   def destroy
     # For validation, the user's session must be the same as the cart ID and then the cart will be destroyed
-    @cart.destroy if @cart.id == session[:card_id]
+    @cart.destroy if @cart.id == session[:cart_id]
     session[:card_id] = nil
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Cart was successfully destroyed.' }
-      format.json { head :no_content }
+    
+    respond_to do |format|  
+        format.html { redirect_to stickers_path, notice: 'Cart was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
-  end
 
   private
     # Finds the cart using the ID passed via the params and assigns this to the cart variable so it can be used elsewhere

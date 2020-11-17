@@ -1,7 +1,6 @@
 class Sticker < ApplicationRecord
-    before_destroy :not_referenced_by_any_cart_item
     belongs_to :user, optional: true
-    has_many :cart_items
+    has_many :cart_items, dependent: :destroy
     mount_uploader :image, ImageUploader
 
 
@@ -11,7 +10,7 @@ class Sticker < ApplicationRecord
     #this sets the maximum lengths and sends a message to the user if they exceed that length
     validates :description, length: { maximum: 1000, too_long: "Description must be less than %{count} characters."}
     validates :title, length: {maximum: 200, too_long: "Title must be less than %{count} characters." }
-    #this ensures that the price must be greater than 0 and in the regex format provided, that's no more than 6 characters in total
+    #this ensures that the price must be greater than 0 and in the regex format provided with two decimal points, that's no more than 6 characters in total
     validates :price, :numericality => {:greater_than => 0}, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }, length: {maximum: 6}
 
     #Available selection options for the material and finish attributes of stickers
@@ -19,14 +18,5 @@ class Sticker < ApplicationRecord
     FINISH = %w{ Matte Glossy Transparent }
 
     private 
-
-    #This allows the cart to still be deleted regardless of whether there are items in it
-    def not_referenced_by_any_cart_item
-        unless cart_items.empty?
-            errors.add(:base, "Line items present")
-            throw :abort
-        end
-    end
-
 
 end
