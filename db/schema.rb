@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_16_053014) do
+ActiveRecord::Schema.define(version: 2020_11_17_095925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 2020_11_16_053014) do
     t.index ["user_id"], name: "index_stickers_on_user_id"
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "seller_id", null: false
+    t.bigint "buyer_id", null: false
+    t.bigint "sticker_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["buyer_id"], name: "index_transactions_on_buyer_id"
+    t.index ["seller_id"], name: "index_transactions_on_seller_id"
+    t.index ["sticker_id"], name: "index_transactions_on_sticker_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -60,4 +71,7 @@ ActiveRecord::Schema.define(version: 2020_11_16_053014) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "stickers"
   add_foreign_key "stickers", "users"
+  add_foreign_key "transactions", "stickers"
+  add_foreign_key "transactions", "users", column: "buyer_id"
+  add_foreign_key "transactions", "users", column: "seller_id"
 end
