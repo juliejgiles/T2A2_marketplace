@@ -16,6 +16,7 @@ module Stickerstation
     #Using Rails asset pipeline so that the static images in the Assets/Images directory will be compiled.
     config.serve_static_assets = true
 
+    #Compile assets without Heroku connecting to the database when deploying
     config.assets.initialize_on_precompile = false 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
