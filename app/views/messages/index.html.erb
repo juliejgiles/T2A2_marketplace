@@ -1,0 +1,26 @@
+<h1 class="title"> Message to <%= @conversation.recipient.username %></h1>
+
+<% @messages.each do |message| %>
+    <% if message.body %>
+        <% user = User.find(message.user_id) %>
+            <div class="message is-dark">
+                <hr>
+                <strong>Message from  <%= user.username %>:</strong>
+                <%= message.body %>
+                 <%= message.message_time %>
+            </div>
+
+    <% end %>
+<% end %>
+
+<%# Form for two models - Conversation and Message, that need to associate with one another  %>
+ <%= form_for [@conversation, @message], html: {class: "input-group"} do |f| %>
+    <div class="container">
+        <%= f.text_area :body, class: "textarea", placeholder: "Contact seller about a sticker" %>
+        <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+        <div class="subtitle">
+          <%= f.submit "Send message", class: "button is-link" %>
+        </div>
+    </div>
+<% end %>
+ 

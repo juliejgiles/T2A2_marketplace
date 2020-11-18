@@ -1,5 +1,6 @@
 class Cart < ApplicationRecord
     has_many :cart_items, dependent: :destroy
+    
 
     def add_sticker(sticker)
 
@@ -18,5 +19,4 @@ class Cart < ApplicationRecord
         cart_items.to_a.sum { |item| item.total_price }
     end
 
-    
 end

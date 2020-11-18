@@ -55,11 +55,21 @@
          <i class="fas fa-shopping-cart"></i>    
       </span>
       <hr>
+
+<% if @sticker.user.id != current_user.id %>
+  <%= button_to "Message #{@sticker.user.username}", conversations_path(sender_id: current_user.id, recipient_id: @sticker.user.id), method: "post", class: 'button is-warning has-text-black' %>
+<% else %>
+  <%= button_to "Conversations", conversations_path %>
+<% end %>
+
       <div class="container edit-functions">
           <% if sticker_author(@sticker) %>
               <%= link_to 'Edit', edit_sticker_path(@sticker), class: "button is-small is-black" %>
               <%= link_to 'Destroy', @sticker, method: :delete, data: { confirm: "Are you sure you want to delete this sticker listing?" }, class: "button is-small is-black" %>
           <% end %>
+      </div>
+      <div class="container edit-functions">
+      
       </div>
       
     </article>
@@ -93,18 +103,34 @@
   <%# Box of items recommended for the user  %>
   <div class="column">
     <div class="other-views">
-      <h3 class="subtitle recommendations is-4 ">People who have bought this sticker have also bought:</h3>
-        <table class="table is-narrow">
+      <h3 class="subtitle recommendations is-4 ">Recommended for you:</h3>
+        <%# <table class="table is-narrow"> %>
             <tr>
-              <td class="has-text-weight-bold">TEST-TITLE</td>
-              <td><%= @sticker %></td>
+              <td><%= @recommendedstickers %></td>
             </tr>
-    </div>
+
     <div class="bg-white pa4 border-radius-3">
-        <h4 class="is-5 has-text-centered price"><%= number_to_currency(@sticker.price) %></h4>
-        <p class="has-text-centered mb4">Designed by <%= @sticker.user.name %></p>
+        <h4 class="is-5 has-text-center price"><%= number_to_currency(@recommendedstickers.price) %></h4>
+        <p class="has-text-center">Designed by <%= @recommendedstickers.user.username %></p>
+        <div class="container default-image-holder">
+              <% if @recommendedstickers.image? %>
+                <%= link_to image_tag(@recommendedstickers.image_url(:thumb).to_s), @recommendedstickers %>
+              <% else  %>
+                <h1 class="preview"> No Preview Available </h1>
+                <span class="icon no-preview-icon is-large fas fa-4x">
+                      <i class="far fa-meh-blank"></i>    
+                </span>
+                <div class="see-more">
+                  <%= link_to "Read more about this sticker ", @recommendedstickers %>
+                </div>
+              <% end %>
+          </div>
     </div>
+    </div>
+   
   </div> 
    
+
+
 
 

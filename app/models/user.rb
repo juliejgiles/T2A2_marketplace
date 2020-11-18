@@ -3,16 +3,24 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+         validates_presence_of :username
+         validates_uniqueness_of :username, :uniqueness => true
+         validate :validate_username
+         before_validation :sanitize_user_inputs
     
   has_many :stickers
-  has_many :sales, class_name: 'Transactions', foreign_key: :seller_id
-  has_many :purchases, class_name: 'Transactions', foreign_key: :buyer_id
 
-  has_many :sold_stickers, through: :sales, source: :sticker
-  has_many :purchased_stickers, through: :purchases, source: :sticker
 
-  scope :sellers, -> { joins(:sales) }
-  scope :buyers, -> { joins(:purchases) }
+# Sanitizes user input using regex format requirement
+  private
+    def sanitize_user_inputs
+        self.username = username.downcase
+        if self.bio != nil
+          self.bio.gsub!(/[^0-9A-Za-z ,.'!"]/, '')
+        else
+        end
+    end
 
-  
-end
+ end
+

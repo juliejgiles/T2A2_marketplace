@@ -17,6 +17,5 @@ class Sticker < ApplicationRecord
     MATERIAL = %w{ Vinyl Paper Polyester }
     FINISH = %w{ Matte Glossy Transparent }
 
-    private 
-
+ 
 end

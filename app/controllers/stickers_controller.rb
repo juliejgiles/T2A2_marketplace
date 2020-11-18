@@ -8,7 +8,10 @@ class StickersController < ApplicationController
  
   def index
     # Query method ".includes" used to minimise database calls by allowing us to access the stickers that are associated with the User model
-    @stickers = Sticker.all.order("created_at desc").includes(:user)
+    @stickers = Sticker.all.order("title asc").includes(:user)
+    #The newest created stickers are found using the 'created_at' timestamp and stored in the below variable, which is called and displayed in the index view
+    @newstickers = Sticker.all.limit(4).order("created_at desc").includes(:user)
+   
  
     #search function below works by comparing the :search param against the Sticker's attribute data. Guard statement to ensure search term is made downcase and white spaces removed
       if params[:search] && params[:search] != ""
@@ -25,6 +28,7 @@ class StickersController < ApplicationController
   # GET /stickers/1
   # GET /stickers/1.json
   def show
+    @recommendedstickers = Sticker.find(Sticker.pluck(:id).sample)
   end
 
   # GET /stickers/new

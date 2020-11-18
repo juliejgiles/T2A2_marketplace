@@ -86,3 +86,4 @@ gem 'font-awesome-sass', '~> 5.15.1'
 
 #adds the Coffeescript gem for compiling javascript 
 gem 'coffee-script-source'
+
