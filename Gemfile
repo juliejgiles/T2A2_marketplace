@@ -75,15 +75,15 @@ end
 #adds the Bulma gem to provide a CSS framework based on Flexbos - https://github.com/joshuajansen/bulma-rails 
 gem "bulma-rails", "~> 0.9.0"
 
-#adds the Carrierwave gem which lets users (sellers) upload images to the app easily - https://github.com/carrierwaveuploader/carrierwave
+#adds the Carrierwave gem which lets users upload images to the app easily - https://github.com/carrierwaveuploader/carrierwave
 gem 'carrierwave', '~> 2.0'
 
 #adds the MiniMagick gem which lets users transform images that they're uploading - https://github.com/minimagick/minimagick
 gem "mini_magick"
 
-#adds font-awesome, which is used for the heart icons on each sticker 
+#adds font-awesome, which is used for icons throughout the app - https://github.com/FortAwesome/font-awesome-sass
 gem 'font-awesome-sass', '~> 5.15.1'
 
-#adds the Coffeescript gem for compiling javascript 
+#adds the Coffeescript gem for compiling javascript - https://rubygems.org/gems/coffee-script-source/versions/1.10.0
 gem 'coffee-script-source'
 

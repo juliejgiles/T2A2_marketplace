@@ -9,7 +9,7 @@
     <div class="columns">
       <div class="inputs column margin-column1">
           <div class="control">
-            <label class="label">Heading</label>
+            <label class="label">Heading (required)</label>
           </div>
           <div class="control"> 
             <%= f.input :title, required: true, input_html: { class: "input"}, autofocus: true, wrapper: false, label: false %>
@@ -17,7 +17,7 @@
       </div>
       <div class="inputs column margin-column1">
           <div class="control">
-            <label class="label">Price</label>
+            <label class="label">Price (required)</label>
           </div>
           <div class="control"> 
             <%= f.input :price, required: true, input_html: { class:"input", maxlength: 6 }, autofocus: true, wrapper: false, label: false %>
@@ -27,7 +27,7 @@
 
     <div class="row" style="background-color: #e99898">
       <div class="inputs column margin-column"> 
-        <label class="label">Description of sticker</label> 
+        <label class="label">Description of sticker (required)</label> 
           <div class="control"> 
             <%= f.input :description, required: true, input_html: { class: "textarea"}, autofocus: true, wrapper: false, label: false %>
           </div>
@@ -36,7 +36,7 @@
       
     <div class="row" style="background-color: #e99898">
         <div class="inputs column margin-column">  
-          <label class="label">Finish</label>
+          <label class="label">Finish (required)</label>
             <div class="control"> 
               <span class="select">
                 <%= f.input_field :finish, collection: Sticker::FINISH, prompt: "Select finish of sticker" %>
@@ -50,7 +50,7 @@
 
     <div class="row" style="background-color: #e99898">
         <div class="inputs column margin-column">  
-          <label class="label">Material</label>
+          <label class="label">Material (required)</label>
               <div class="control"> 
                 <div class="control"> 
                   <span class="select">
@@ -66,7 +66,7 @@
 
     <div class="row" style="background-color: #e99898">
         <div class="inputs column margin-column">
-          <label class="label">Add images</label>
+          <label class="label">Add images (optional)</label>
             <div class="file">
               <label class="file-label">
                 <%= f.input :image, as: :file, input_html: { class:"file-input sticker-image" }, autofocus: true, label: false, wrapper: false %>

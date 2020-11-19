@@ -7,6 +7,7 @@ class User < ApplicationRecord
          validates_uniqueness_of :username, :uniqueness => true
         
   has_many :stickers
-
+  has_many :conversations
+  has_many :messages
  end
 

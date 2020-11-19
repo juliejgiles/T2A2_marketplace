@@ -56,11 +56,11 @@
       </span>
       <hr>
 
-<% if @sticker.user.id != current_user.id %>
-  <%= button_to "Message #{@sticker.user.username}", conversations_path(sender_id: current_user.id, recipient_id: @sticker.user.id), method: "post", class: 'button is-warning has-text-black' %>
-<% else %>
-  <%= button_to "Conversations", conversations_path %>
-<% end %>
+<%# if current_user.id != @sticker.user.id %>
+  <%= button_to "Messages about this sticker listing", conversations_path(sender_id: current_user.id, recipient_id: @sticker.user.id), method: "post", class: 'button is-warning has-text-black' %>
+<%# else %>
+  <%#= button_to "Conversations", conversations_path %>
+<%# end %>
 
       <div class="container edit-functions">
           <% if sticker_author(@sticker) %>
@@ -104,11 +104,7 @@
   <div class="column">
     <div class="other-views">
       <h3 class="subtitle recommendations is-4 ">Recommended for you:</h3>
-        <%# <table class="table is-narrow"> %>
-            <tr>
-              <td><%= @recommendedstickers %></td>
-            </tr>
-
+        
     <div class="bg-white pa4 border-radius-3">
         <h4 class="is-5 has-text-center price"><%= number_to_currency(@recommendedstickers.price) %></h4>
         <p class="has-text-center">Designed by <%= @recommendedstickers.user.username %></p>
