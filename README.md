@@ -17,12 +17,12 @@ The marketplace app I have built allows sticker creators to sell their stickers 
 ### **Link to deployed app (R9)**
 
 https://stickerstation.herokuapp.com/
-![Image of heroku URL](../../docs/heroku.png)
+![Image of heroku URL](../docs/heroku.png)
 
 ### **Link to GitHub repository (R10)**
 
 https://github.com/juliejgiles/T2A2_marketplace
-![Image of github profile](../../docs/github.png)
+![Image of github profile](../docs/github.png)
 
 ### **Description of Marketplace App(R11)**
 
@@ -42,30 +42,30 @@ To create a two-sided marketplace that allow users to either sell or buy sticker
 
 ***Sitemap***
 
-![Image of sitemap of marketplace app](../../docs/SitemapT2A2-Page-1.jpg)
+![Image of sitemap of marketplace app](../docs/SitemapT2A2-Page-1.jpg)
 
 ***Screenshots***
 
 Index page
-![Image of index page of marketplace app](../../docs/index.png)
+![Image of index page of marketplace app](../docs/index.png)
 
 In different viewports
-![Image of index page in different viewports](../../docs/responsive1.png)
+![Image of index page in different viewports](../docs/responsive1.png)
 
 Individual listing pages
-![Image of individual listing](../../docs/show.png)
+![Image of individual listing](../docs/show.png)
 
 Message board about a sticker listing 
-![Image of message board](../../docs/messageboard.png)
+![Image of message board](../docs/messageboard.png)
 
 Sign up form
-![Image of sign up form](../../docs/signup.png)
+![Image of sign up form](../docs/signup.png)
 
 Sticker recommendation links
-![Image of sticker recommendation link](../../docs/recommendation.png)
+![Image of sticker recommendation link](../docs/recommendation.png)
 
 Shopping cart
-![Image of cart](../../docs/cart.png)
+![Image of cart](../docs/cart.png)
 
 
 ***Target audience***
@@ -123,33 +123,33 @@ A user that signs up can either buy, sell or do both, so there is no separate ro
 
 Index page
 
-![Image of index page wireframe](../../docs/indexwireframe2.png)
+![Image of index page wireframe](../docs/indexwireframe2.png)
 
 
 Individual sticker listing page
 
-![Image of individual listing page wireframe](../../docs/showwireframe.png)
+![Image of individual listing page wireframe](../docs/showwireframe.png)
 
 Cart page
 
-![Image of cart page wireframe](../../docs/cartwireframe.png)
+![Image of cart page wireframe](../docs/cartwireframe.png)
 
 
 Create new listing page
 
-![Image of new listing page wireframe](../../docs/newwireframe.png)
+![Image of new listing page wireframe](../docs/newwireframe.png)
 
 
 Sign-up page
 
-![Image of sign up page wireframe](../../docs/signupwireframe.png)
+![Image of sign up page wireframe](../docs/signupwireframe.png)
 
 ### **ERD (R14)**
 
 
 Entity Relationship Diagram
 
-![Image of ERD](../../docs/ERD.jpg)
+![Image of ERD](../docs/ERD.jpg)
 
 ### **High-level components of app (R15)**
 
@@ -321,7 +321,7 @@ Branching in Git was used where a new feature was created in a separate branch b
 
 Link to Trello board: https://trello.com/b/regY36ov/two-sided-marketplace-sticker-station
 
-![Image of trello board](../../docs/trelloboard.png)
+![Image of trello board](../docs/trelloboard.png)
 
 ***Process used***
 Cards were set up in the trello board, where each card represented a deliverable in the project. The steps required to achieve the deliverable were set out in a to-do list within the card. Any bugs or additional steps required were logged into the Trello board to ensure they were not overlooked. Due dates were set for main deliverables.
